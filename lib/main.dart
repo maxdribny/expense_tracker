@@ -1,9 +1,8 @@
-import 'package:expense_tracker/widgets/transaction_list.dart';
-
-import './widgets/new_transaction.dart';
+import 'package:flutter/material.dart';
 
 import './widgets/transaction_list.dart';
-import 'package:flutter/material.dart';
+import './widgets/new_transaction.dart';
+import './widgets/transaction_list.dart';
 
 import 'models/transaction.dart';
 
@@ -18,12 +17,26 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              title: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18),
+            ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+              title: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold)),
+        ),
       ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget  {
+class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -36,16 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
         id: '1', title: "Groceries", amount: 10.99, date: DateTime.now()),
     Transaction(
         id: '2', title: "New shoes", amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: '3', title: "Test 1", amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: '4', title: "Test 2", amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: '5', title: "Test 3", amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: '6', title: "Test 4", amount: 69.99, date: DateTime.now()),
-        Transaction(
-        id: '7', title: "Test 5", amount: 69.99, date: DateTime.now()),
+    Transaction(id: '3', title: "Test 1", amount: 69.99, date: DateTime.now()),
+    Transaction(id: '4', title: "Test 2", amount: 69.99, date: DateTime.now()),
+    Transaction(id: '5', title: "Test 3", amount: 69.99, date: DateTime.now()),
+    Transaction(id: '6', title: "Test 4", amount: 69.99, date: DateTime.now()),
+    Transaction(id: '7', title: "Test 5", amount: 69.99, date: DateTime.now()),
   ];
 
   void _addNewTransaction(String title, double amount) {
@@ -59,10 +67,13 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() => _userTransactions.add(tx));
   }
 
-  void _displayNewTransactionInput(BuildContext ctx){
-    showModalBottomSheet(context: ctx, builder: (_) {
-      return NewTransaction(_addNewTransaction);
-    },);
+  void _displayNewTransactionInput(BuildContext ctx) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return NewTransaction(_addNewTransaction);
+      },
+    );
   }
 
   @override
@@ -85,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Card(
                 //Card assumes size of its child unless you have a parent with a defined width.
                 color: Colors.lightBlue,
-                child: Text('CHART'),
+                child: Text('CHART PLACEHOLDER'),
                 elevation: 5,
               ),
             ),
