@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Card(
                 //Card assumes size of its child unless you have a parent with a defined width.
                 color: Colors.lightBlue,
-                child: Text('CHART'),
+                child: Text('CHART PLACEHOLDER'),
                 elevation: 5,
               ),
             ),
