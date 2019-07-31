@@ -43,6 +43,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
+    //TODO: Remove test transactions
+    // **************************** TEST TRANSACTIONS ****************************
     //  Transaction(
     //      id: '0', title: "New shoes", amount: 69.99, date: DateTime.now()),
     // Transaction(
@@ -91,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        title: Text('Expenses Tracker'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
