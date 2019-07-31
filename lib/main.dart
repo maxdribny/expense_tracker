@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import './widgets/transaction_list.dart';
 import './widgets/new_transaction.dart';
-import './widgets/transaction_list.dart';
 
 import 'models/transaction.dart';
 
@@ -43,17 +42,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-        id: '0', title: "New shoes", amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: '1', title: "Groceries", amount: 10.99, date: DateTime.now()),
-    Transaction(
-        id: '2', title: "New shoes", amount: 69.99, date: DateTime.now()),
-    Transaction(id: '3', title: "Test 1", amount: 69.99, date: DateTime.now()),
-    Transaction(id: '4', title: "Test 2", amount: 69.99, date: DateTime.now()),
-    Transaction(id: '5', title: "Test 3", amount: 69.99, date: DateTime.now()),
-    Transaction(id: '6', title: "Test 4", amount: 69.99, date: DateTime.now()),
-    Transaction(id: '7', title: "Test 5", amount: 69.99, date: DateTime.now()),
+    // Transaction(
+    //     id: '0', title: "New shoes", amount: 69.99, date: DateTime.now()),
+    // Transaction(
+    //     id: '1', title: "Groceries", amount: 10.99, date: DateTime.now()),
+    // Transaction(
+    //     id: '2', title: "New shoes", amount: 69.99, date: DateTime.now()),
+    // Transaction(
+    //     id: '3', title: "More bananas", amount: 69.99, date: DateTime.now()),
+    // Transaction(id: '4', title: "Test 2", amount: 69.99, date: DateTime.now()),
+    // Transaction(id: '5', title: "Test 3", amount: 69.99, date: DateTime.now()),
+    // Transaction(id: '6', title: "Test 4", amount: 69.99, date: DateTime.now()),
+    // Transaction(id: '7', title: "Test 5", amount: 69.99, date: DateTime.now()),
   ];
 
   void _addNewTransaction(String title, double amount) {
