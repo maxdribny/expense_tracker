@@ -19,11 +19,10 @@ class _NewTransactionState extends State<NewTransaction> {
 
     if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
+    } else {
+      widget.addTransactionPointer(enteredTitle, enteredAmount);
+      Navigator.of(context).pop();
     }
-
-    widget.addTransactionPointer(enteredTitle, enteredAmount);
-
-    Navigator.of(context).pop();
   }
 
   @override

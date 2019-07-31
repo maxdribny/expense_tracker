@@ -65,7 +65,7 @@ class TransactionList extends StatelessWidget {
                         ),
                         Text(
                           //DateFormat object provided by intl package. .format() returns a string.
-                          DateFormat('d MMM, yyyy')
+                          DateFormat('E - d MMM, yyyy')
                               .format(_transactions[index].date),
                           //tx.date.toString(),
                           style: TextStyle(

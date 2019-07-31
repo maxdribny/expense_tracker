@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './widgets/transaction_list.dart';
 import './widgets/new_transaction.dart';
+import './widgets/chart.dart';
 
 import 'models/transaction.dart';
 
@@ -42,8 +43,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    // Transaction(
-    //     id: '0', title: "New shoes", amount: 69.99, date: DateTime.now()),
+    //  Transaction(
+    //      id: '0', title: "New shoes", amount: 69.99, date: DateTime.now()),
     // Transaction(
     //     id: '1', title: "Groceries", amount: 10.99, date: DateTime.now()),
     // Transaction(
@@ -55,6 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
     // Transaction(id: '6', title: "Test 4", amount: 69.99, date: DateTime.now()),
     // Transaction(id: '7', title: "Test 5", amount: 69.99, date: DateTime.now()),
   ];
+
+  List<Transaction> get _recentTransactions {
+    //only returns transactions that are younger than 7 days
+    //********************************************************* */
+    //where returns an iterable NOT a list with the items which satisfy the test condition
+    //********************************************************* */
+    return _userTransactions.where((tx) {
+      return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+  }
 
   void _addNewTransaction(String title, double amount) {
     //creates a new transaction based on the passsed parameters
@@ -92,13 +103,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             Container(
-              width: double.infinity,
-              child: Card(
-                //Card assumes size of its child unless you have a parent with a defined width.
-                color: Colors.lightBlue,
-                child: Text('CHART PLACEHOLDER'),
-                elevation: 5,
-              ),
+              //width: double.infinity,
+                child: Chart(
+                  _recentTransactions,
+                ),
             ),
             TransactionList(_userTransactions),
           ],
