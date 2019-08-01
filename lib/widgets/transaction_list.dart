@@ -10,7 +10,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
+      height: 300,
       //renders waiting.png image if the transactions list is empty
       child: _transactions.isEmpty
           ? Column(
@@ -34,49 +34,33 @@ class TransactionList extends StatelessWidget {
                 )
               ],
             )
+            //creates a scrollable ListView dynamically
+            //use this instead of static as it will only re-draw what needs to go on to the screen
+            //more efficient for larger lists
           : ListView.builder(
               itemBuilder: (ctx, index) => Card(
-                elevation: 10,
-                child: Row(children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Theme.of(context).primaryColor,
-                        width: 2,
-                      ),
-                    ),
-                    child: Text(
-                      '\£${_transactions[index].amount.toStringAsFixed(2)}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Theme.of(context).primaryColor,
+                elevation: 5,
+                margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                //ListTile -> a single fixed-height row that typically contians some text as well as a leading or trailing icon
+                //Look at docs for good explanation [https://api.flutter.dev/flutter/material/ListTile-class.html]
+                child: ListTile(
+                  leading: CircleAvatar(
+                    radius: 30,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: FittedBox(
+                        child: Text('\$${_transactions[index].amount}'),
                       ),
                     ),
                   ),
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          _transactions[index].title,
-                          style: Theme.of(context).textTheme.title,
-                        ),
-                        Text(
-                          //DateFormat object provided by intl package. .format() returns a string.
-                          DateFormat('E - d MMM, yyyy')
-                              .format(_transactions[index].date),
-                          //tx.date.toString(),
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ]),
-                ]),
+                  title: Text(_transactions[index].title,
+                      style: Theme.of(context).textTheme.title),
+                  subtitle: Text(
+                    DateFormat.yMMMd().format(_transactions[index].date),
+                  ),
+                ),
               ),
-              itemCount: _transactions
+              itemCount: _transactions //the number of items to be built
                   .length, //insures that the widgets do not continue to attempt to infinitely build. Otherwise throws RangeError(Index) Index not in range error.
             ),
     );

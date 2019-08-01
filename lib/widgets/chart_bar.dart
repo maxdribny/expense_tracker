@@ -13,8 +13,11 @@ class ChartBar extends StatelessWidget {
       children: <Widget>[
         Container(
           alignment: Alignment(-0.21, 0), //pulls the alignment by -0.23(x)
-          child: FittedBox(
-            child: Text('\$${amountSpent.toStringAsFixed(0)}'),
+          child: Container(
+            height: 20,
+            child: FittedBox(
+              child: Text('\$${amountSpent.toStringAsFixed(0)}'),
+            ),
           ),
         ),
         SizedBox(

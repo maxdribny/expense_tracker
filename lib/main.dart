@@ -45,24 +45,24 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
     //TODO: Remove test transactions
     // **************************** TEST TRANSACTIONS ****************************
-    //  Transaction(
-    //      id: '0', title: "New shoes", amount: 69.99, date: DateTime.now()),
-    // Transaction(
-    //     id: '1', title: "Groceries", amount: 10.99, date: DateTime.now()),
-    // Transaction(
-    //     id: '2', title: "New shoes", amount: 69.99, date: DateTime.now()),
-    // Transaction(
-    //     id: '3', title: "More bananas", amount: 69.99, date: DateTime.now()),
-    // Transaction(id: '4', title: "Test 2", amount: 69.99, date: DateTime.now()),
-    // Transaction(id: '5', title: "Test 3", amount: 69.99, date: DateTime.now()),
-    // Transaction(id: '6', title: "Test 4", amount: 69.99, date: DateTime.now()),
-    // Transaction(id: '7', title: "Test 5", amount: 69.99, date: DateTime.now()),
+     Transaction(
+         id: '0', title: "New shoes", amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: '1', title: "Groceries", amount: 10.99, date: DateTime.now()),
+    Transaction(
+        id: '2', title: "New shoes", amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: '3', title: "More bananas", amount: 69.99, date: DateTime.now()),
+    Transaction(id: '4', title: "Test 2", amount: 69.99, date: DateTime.now()),
+    Transaction(id: '5', title: "Test 3", amount: 69.99, date: DateTime.now()),
+    Transaction(id: '6', title: "Test 4", amount: 69.99, date: DateTime.now()),
+    Transaction(id: '7', title: "Test 5", amount: 69.99, date: DateTime.now()),
   ];
 
   List<Transaction> get _recentTransactions {
     //only returns transactions that are younger than 7 days
     //********************************************************* */
-    //where returns an iterable NOT a list with the items which satisfy the test condition
+    //where(func) returns an iterable NOT a list with the items which satisfy the test condition
     //********************************************************* */
     return _userTransactions.where((tx) {
       return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));

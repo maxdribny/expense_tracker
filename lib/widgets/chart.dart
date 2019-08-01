@@ -8,6 +8,7 @@ class Chart extends StatelessWidget {
 
   Chart(this.recentTransactions);
 
+  //generates a series of transactionsbased on certain parametes (days of the week)
   List<Map<String, Object>> get groupedTransactionsValues {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(
@@ -31,7 +32,7 @@ class Chart extends StatelessWidget {
         'day': DateFormat.E().format(weekDay).substring(0, 1),
         'amount': totalSum
       };
-    });
+    }).reversed.toList();
   }
 
   double get totalSpending =>
